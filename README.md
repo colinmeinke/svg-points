@@ -13,7 +13,7 @@ Includes functions for converting to and from a
   shape: 'circle',
   cx: 50,
   cy: 50,
-  r: 20,
+  r: 25,
 }
 ```
 

@@ -1,8 +1,6 @@
 import toPoints from './toPoints';
 
-const toPath = points => {
-  const p = Array.isArray( points ) ? points : toPoints( points );
-
+const pointsToD = p => {
   let d = '';
   let i = 0;
 
@@ -49,6 +47,18 @@ const toPath = points => {
   }
 
   return d;
+};
+
+const toPath = s => {
+  const isPoints = Array.isArray( s );
+  const isGroup = isPoints ? ( Array.isArray( s[ 0 ])) : ( s.shape === 'g' );
+  const points = isPoints ? s : ( isGroup ? s.shapes.map( shp => toPoints( shp )) : toPoints( s ));
+
+  if ( isGroup ) {
+    return points.map( p => pointsToD( p ));
+  }
+
+  return pointsToD( points );
 };
 
 export default toPath;

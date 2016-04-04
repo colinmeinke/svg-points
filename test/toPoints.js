@@ -221,4 +221,27 @@ describe( 'toPoints', () => {
 
     expect( points ).toEqual( expectedPoints );
   });
+
+  it ( 'should return correct points of a g', () => {
+    const shape = { shape: 'g', shapes: [
+      { shape: 'circle', cx: 50, cy: 50, r: 20 },
+      { shape: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
+    ]};
+
+    const expectedPoints = [
+      [
+        { x: 50, y: 30 },
+        { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
+        { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
+      ],
+      [
+        { x: 10, y: 70 },
+        { x: 50, y: 200 },
+      ],
+    ];
+
+    const points = toPoints( shape );
+
+    expect( points ).toEqual( expectedPoints );
+  });
 });

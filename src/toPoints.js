@@ -14,6 +14,8 @@ const toPoints = ({ shape, ...attributes }) => {
       return getPointsFromPolyline( attributes );
     case 'rect':
       return getPointsFromRect( attributes );
+    case 'g':
+      return getPointsFromG( attributes );
     default:
       throw new Error( 'Not a valid shape type' );
   }
@@ -286,5 +288,7 @@ const getPointsFromRectWithCornerRadius = ({ height, rx, ry, width, x, y }) => {
     { x: x + rx, y, curve },
   ];
 };
+
+const getPointsFromG = ({ shapes }) => shapes.map( s => toPoints( s ));
 
 export default toPoints;

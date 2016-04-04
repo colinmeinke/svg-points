@@ -231,4 +231,43 @@ describe( 'toPath', () => {
 
     expect( path ).toEqual( expectedPath );
   });
+
+  it ( 'should return correct paths from g shape', () => {
+    const shape = { shape: 'g', shapes: [
+      { shape: 'circle', cx: 50, cy: 50, r: 20 },
+      { shape: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
+    ]};
+
+    const expectedPaths = [
+      'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z',
+      'M10,70L50,200',
+    ];
+
+    const paths = toPath( shape );
+
+    expect( paths ).toEqual( expectedPaths );
+  });
+
+  it ( 'should return correct paths from a group of points', () => {
+    const points = [
+      [
+        { x: 50, y: 30 },
+        { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
+        { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
+      ],
+      [
+        { x: 10, y: 70 },
+        { x: 50, y: 200 },
+      ],
+    ];
+
+    const expectedPaths = [
+      'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z',
+      'M10,70L50,200',
+    ];
+
+    const paths = toPath( points );
+
+    expect( paths ).toEqual( expectedPaths );
+  });
 });

@@ -29,6 +29,7 @@ that can take one of the following strings.
 - [`polygon`](#polygon)
 - [`polyline`](#polyline)
 - [`rect`](#rect)
+- [`g`](#group)
 
 It also maps all the other required SVG attributes for that
 particular shape to object properties.
@@ -114,6 +115,29 @@ particular shape to object properties.
 The properties `rx` and `ry` are optional and if missing are
 assumed to be `0`.
 
+#### g
+
+```js
+{
+  shape: 'g',
+  shapes: [
+    {
+      shape: 'circle',
+      cx: 50,
+      cy: 50,
+      r: 20,
+    },
+    {
+      shape: 'line',
+      x1: 10,
+      x2: 50,
+      y1: 70,
+      y2: 200,
+    },
+  ],
+}
+```
+
 ## Installation
 
 ```
@@ -133,6 +157,9 @@ Takes an SVG shape object as the only argument, and
 returns a new
 [point object shape array](https://github.com/colinmeinke/points).
 
+If passing in a group shape object then returns an array of
+point object shape arrays.
+
 ### toPath
 
 ```js
@@ -144,6 +171,10 @@ const pathFromPoints = toPath( points );
 Takes either an SVG shape object, or a
 [point object shape array](https://github.com/colinmeinke/points),
 and returns a SVG path `d` attribute string.
+
+If passing in a group shape object, or an array of
+point object shape arrays then returns an array of
+SVG path `d` attribute strings.
 
 ## CommonJS
 

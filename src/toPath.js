@@ -10,9 +10,9 @@ const pointsToD = p => {
     const isFirstPoint = i === 0;
     const isLastPoint = i === p.length - 1;
     const prevPoint = isFirstPoint ? null : p[ i - 1 ];
-    const { curve = false, x, y } = point;
+    const { curve = false, moveTo, x, y } = point;
 
-    if ( isFirstPoint ) {
+    if ( moveTo || isFirstPoint ) {
       d += `M${ x },${ y }`;
     } else if ( curve ) {
       switch ( curve.type ) {

@@ -5,7 +5,7 @@ import toPath from '../src/toPath';
 describe( 'toPath', () => {
   it( 'should return correct path from circle points', () => {
     const points = [
-      { x: 50, y: 30 },
+      { x: 50, y: 30, moveTo: true },
       { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
       { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
     ];
@@ -19,7 +19,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from ellipse points', () => {
     const points = [
-      { x: 100, y: 180 },
+      { x: 100, y: 180, moveTo: true },
       { x: 100, y: 420, curve: { type: 'arc', rx: 65, ry: 120 }},
       { x: 100, y: 180, curve: { type: 'arc', rx: 65, ry: 120 }},
     ];
@@ -33,7 +33,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from line points', () => {
     const points = [
-      { x: 10, y: 70 },
+      { x: 10, y: 70, moveTo: true },
       { x: 50, y: 200 },
     ];
 
@@ -46,7 +46,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from path points', () => {
     const points = [
-      { x: 20, y: 20 },
+      { x: 20, y: 20, moveTo: true },
       { x: 70, y: 20 },
       { x: 70, y: 40 },
       { x: 90, y: 30 },
@@ -63,9 +63,28 @@ describe( 'toPath', () => {
     expect( path ).toEqual( expectedPath );
   });
 
+  it( 'should return correct path from path points (with moveto)', () => {
+    const points = [
+      { x: 20, y: 20, moveTo: true },
+      { x: 20, y: 50 },
+      { x: 50, y: 20, moveTo: true },
+      { x: 50, y: 50 },
+      { x: 80, y: 20, moveTo: true },
+      { x: 80, y: 50 },
+      { x: 110, y: 20, moveTo: true },
+      { x: 110, y: 50 },
+    ];
+
+    const expectedPath = 'M20,20V50M50,20V50M80,20V50M110,20V50';
+
+    const path = toPath( points );
+
+    expect( path ).toEqual( expectedPath );
+  });
+
   it( 'should return correct path from path points (with arcs)', () => {
     const points = [
-      { x: 20, y: 20 },
+      { x: 20, y: 20, moveTo: true },
       { x: 70, y: 20 },
       { x: 70, y: 40 },
       { x: 80, y: 35, curve: { type: 'arc', rx: 2, ry: 2, sweepFlag: 1 }},
@@ -86,7 +105,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from path points (with cubic beziers)', () => {
     const points = [
-      { x: 20, y: 20 },
+      { x: 20, y: 20, moveTo: true },
       { x: 70, y: 20 },
       { x: 70, y: 40 },
       { x: 80, y: 35, curve: { type: 'cubic', x1: 70, y1: 45, x2: 80, y2: 40 }},
@@ -107,7 +126,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from path points (with shorthand cubic beziers)', () => {
     const points = [
-      { x: 100, y: 100 },
+      { x: 100, y: 100, moveTo: true },
       { x: 200, y: 100, curve: { type: 'cubic', x1: 125, y1: 50, x2: 175, y2: 50 }},
       { x: 300, y: 100, curve: { type: 'cubic', x1: 225, y1: 150, x2: 300, y2: 110 }},
     ];
@@ -121,7 +140,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from path points (with quadratic beziers)', () => {
     const points = [
-      { x: 20, y: 20 },
+      { x: 20, y: 20, moveTo: true },
       { x: 70, y: 20 },
       { x: 70, y: 40 },
       { x: 80, y: 35, curve: { type: 'quadratic', x1: 70, y1: 45 }},
@@ -142,7 +161,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from path points (with shorthand quadratic beziers)', () => {
     const points = [
-      { x: 300, y: 400 },
+      { x: 300, y: 400, moveTo: true },
       { x: 600, y: 400, curve: { type: 'quadratic', x1: 450, y1: 200 }},
       { x: 900, y: 500, curve: { type: 'quadratic', x1: 750, y1: 600 }},
       { x: 1000, y: 500, curve: { type: 'quadratic', x1: 1050, y1: 400 }},
@@ -157,7 +176,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from polyline points', () => {
     const points = [
-      { x: 20, y: 30 },
+      { x: 20, y: 30, moveTo: true },
       { x: 50, y: 90 },
       { x: 20, y: 90 },
       { x: 50, y: 30 },
@@ -172,7 +191,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from polygon points', () => {
     const points = [
-      { x: 20, y: 30 },
+      { x: 20, y: 30, moveTo: true },
       { x: 50, y: 90 },
       { x: 20, y: 90 },
       { x: 50, y: 30 },
@@ -188,7 +207,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from rect points', () => {
     const points = [
-      { x: 10, y: 10 },
+      { x: 10, y: 10, moveTo: true },
       { x: 60, y: 10 },
       { x: 60, y: 30 },
       { x: 10, y: 30 },
@@ -204,7 +223,7 @@ describe( 'toPath', () => {
 
   it( 'should return correct path from rect points (with corner radius)', () => {
     const points = [
-      { x: 55, y: 50 },
+      { x: 55, y: 50, moveTo: true },
       { x: 545, y: 50 },
       { x: 550, y: 60, curve: { type: 'arc', rx: 5, ry: 10, sweepFlag: 1 }},
       { x: 550, y: 240 },
@@ -251,12 +270,12 @@ describe( 'toPath', () => {
   it ( 'should return correct paths from a group of points', () => {
     const points = [
       [
-        { x: 50, y: 30 },
+        { x: 50, y: 30, moveTo: true },
         { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
         { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
       ],
       [
-        { x: 10, y: 70 },
+        { x: 10, y: 70, moveTo: true },
         { x: 50, y: 200 },
       ],
     ];

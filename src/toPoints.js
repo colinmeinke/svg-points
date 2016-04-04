@@ -23,7 +23,7 @@ const toPoints = ({ shape, ...attributes }) => {
 
 const getPointsFromCircle = ({ cx, cy, r }) => {
   return [
-    { x: cx, y: cy - r },
+    { x: cx, y: cy - r, moveTo: true },
     { x: cx, y: cy + r, curve: { type: 'arc', rx: r, ry: r }},
     { x: cx, y: cy - r, curve: { type: 'arc', rx: r, ry: r }},
   ];
@@ -31,7 +31,7 @@ const getPointsFromCircle = ({ cx, cy, r }) => {
 
 const getPointsFromEllipse = ({ cx, cy, rx, ry }) => {
   return [
-    { x: cx, y: cy - ry },
+    { x: cx, y: cy - ry, moveTo: true },
     { x: cx, y: cy + ry, curve: { type: 'arc', rx, ry }},
     { x: cx, y: cy - ry, curve: { type: 'arc', rx, ry }},
   ];
@@ -39,7 +39,7 @@ const getPointsFromEllipse = ({ cx, cy, rx, ry }) => {
 
 const getPointsFromLine = ({ x1, x2, y1, y2 }) => {
   return [
-    { x: x1, y: y1 },
+    { x: x1, y: y1, moveTo: true },
     { x: x2, y: y2 },
   ];
 };
@@ -60,14 +60,23 @@ const getPointsFromPath = ({ d }) => {
 
     switch ( instructions[ i ]) {
       case 'm':
+        relative = true;
+      case 'M':
+        points.push({
+          x: ( relative ? prevPoint.x : 0 ) + numbers.shift(),
+          y: ( relative ? prevPoint.y : 0 ) + numbers.shift(),
+          moveTo: true,
+        });
+
+        break;
+
       case 'l':
         relative = true;
 
-      case 'M':
       case 'L':
         points.push({
           x: ( relative ? prevPoint.x : 0 ) + numbers.shift(),
-          y: ( relative ? prevPoint.y : 0 ) + numbers.shift()
+          y: ( relative ? prevPoint.y : 0 ) + numbers.shift(),
         });
 
         break;
@@ -242,8 +251,10 @@ const getPointsFromPoints = ({ closed, points }) => {
   }, []);
 
   if ( closed ) {
-    p.push( p[ 0 ]);
+    p.push({ ...p[ 0 ]});
   }
+
+  p[ 0 ].moveTo = true;
 
   return p;
 };
@@ -265,7 +276,7 @@ const getPointsFromRect = ({ height, rx, ry, width, x, y }) => {
 
 const getPointsFromBasicRect = ({ height, width, x, y }) => {
   return [
-    { x, y },
+    { x, y, moveTo: true },
     { x: x + width, y },
     { x: x + width, y: y + height },
     { x, y: y + height },
@@ -277,7 +288,7 @@ const getPointsFromRectWithCornerRadius = ({ height, rx, ry, width, x, y }) => {
   const curve = { type: 'arc', rx, ry, sweepFlag: 1 };
 
   return [
-    { x: x + rx, y },
+    { x: x + rx, y, moveTo: true },
     { x: x + width - rx, y },
     { x: x + width, y: y + ry, curve },
     { x: x + width, y: y + height - ry },

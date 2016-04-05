@@ -52,6 +52,8 @@ const getPointsFromPath = ({ d }) => {
 
   const optionalArcKeys = [ 'xAxisRotation', 'largeArcFlag', 'sweepFlag' ];
 
+  let moveTo;
+
   for ( let i = 0, l = instructions.length; i < l; i++ ) {
     const isFirstPoint = i === 0;
     const prevPoint = isFirstPoint ? null : points[ i - 1 ];
@@ -62,11 +64,11 @@ const getPointsFromPath = ({ d }) => {
       case 'm':
         relative = true;
       case 'M':
-        points.push({
-          x: ( relative ? prevPoint.x : 0 ) + numbers.shift(),
-          y: ( relative ? prevPoint.y : 0 ) + numbers.shift(),
-          moveTo: true,
-        });
+        const x = ( relative ? prevPoint.x : 0 ) + numbers.shift();
+        const y = ( relative ? prevPoint.y : 0 ) + numbers.shift();
+
+        moveTo = { x, y };
+        points.push({ x, y, moveTo: true });
 
         break;
 
@@ -221,7 +223,7 @@ const getPointsFromPath = ({ d }) => {
 
       case 'z':
       case 'Z':
-        points.push({ x: points[ 0 ].x, y: points[ 0 ].y });
+        points.push({ x: moveTo.x, y: moveTo.y });
         break;
     }
   }

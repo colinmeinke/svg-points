@@ -175,6 +175,53 @@ describe( 'toPoints', () => {
     expect( points ).toEqual( expectedPoints );
   });
 
+  it( 'should return correct points of a path (with unspaced negative params)', () => {
+    const shape = { shape: 'path', d: 'M5-2L-1-4' };
+
+    const expectedPoints = [
+      { x: 5, y: -2, moveTo: true },
+      { x: -1, y: -4 },
+    ];
+
+    const points = toPoints( shape );
+
+    expect( points ).toEqual( expectedPoints );
+  });
+
+  it( 'should return correct points of a path (with unspaced decimal params)', () => {
+    const shape = { shape: 'path', d: 'M5.5.2C-.2.5.7.2.9.2' };
+
+    const expectedPoints = [
+      { x: 5.5, y: 0.2, moveTo: true },
+      { x: 0.9, y: 0.2, curve: {
+        type: 'cubic',
+        x1: -0.2,
+        y1: 0.5,
+        x2: 0.7,
+        y2: 0.2,
+      }},
+    ];
+
+    const points = toPoints( shape );
+
+    expect( points ).toEqual( expectedPoints );
+  });
+
+  it( 'should return correct points of a path (with multiple shorthand commands)', () => {
+    const shape = { shape: 'path', d: 'M0,0L10,10,15,20,20,30' };
+
+    const expectedPoints = [
+      { x: 0, y: 0, moveTo: true },
+      { x: 10, y: 10 },
+      { x: 15, y: 20 },
+      { x: 20, y: 30 },
+    ];
+
+    const points = toPoints( shape );
+
+    expect( points ).toEqual( expectedPoints );
+  });
+
   it( 'should return correct points of a polygon', () => {
     const shape = { shape: 'polygon', points: '20,30 50,90 20,90 50,30' };
 

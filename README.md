@@ -4,7 +4,7 @@ A specification for storing SVG shape data in Javascript.
 Includes functions for converting to and from a
 [point object shape array](https://github.com/colinmeinke/points).
 
-**2.1kb gzipped. No dependencies.**
+**2.3kb gzipped. No dependencies.**
 
 ## Example shape
 

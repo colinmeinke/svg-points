@@ -76,7 +76,7 @@ particular shape to object properties.
 ```js
 {
   shape: 'path',
-  d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0,-5,-10l-5,-10Z',
+  d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z',
 }
 ```
 

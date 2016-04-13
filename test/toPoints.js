@@ -45,7 +45,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20L90,30H50V50l-10,-20z' };
+    const shape = { shape: 'path', d: 'M20,20h50v20L90,30H50V50l-10-20z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -65,7 +65,7 @@ describe( 'toPoints', () => {
 
 
   it( 'should return correct points of a path (with moveto)', () => {
-    const shape = { shape: 'path', d: 'M20,20v30m30,-30v30M80,20V50M110,20v30' };
+    const shape = { shape: 'path', d: 'M20,20v30m30-30v30M80,20V50M110,20v30' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -84,7 +84,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with arcs)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0,-5,-10l-5,-10Z' };
+    const shape = { shape: 'path', d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -105,7 +105,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with cubic beziers)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20C70,45,80,40,80,35L90,30H50V50c5,-3,0,-7,-5,-10l-5,-10Z' };
+    const shape = { shape: 'path', d: 'M20,20h50v20C70,45,80,40,80,35L90,30H50V50c5-3,0-7-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -140,7 +140,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with quadratic beziers)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20Q70,45,80,35L90,30H50V50q5,-3,-5,-10l-5,-10Z' };
+    const shape = { shape: 'path', d: 'M20,20h50v20Q70,45,80,35L90,30H50V50q5-3-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },

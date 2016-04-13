@@ -174,6 +174,24 @@ describe( 'toPath', () => {
     expect( path ).toEqual( expectedPath );
   });
 
+  it( 'should return correct path from path points (with moveTo last point)', () => {
+    const points = [
+      { x: 100, y: 0, moveTo: true },
+      { x: 100, y: 100 },
+      { x: 200, y: 0, moveTo: true },
+      { x: 200, y: 100 },
+      { x: 0, y: 0 },
+      { x: 0, y: 100 },
+      { x: 100, y: 0, moveTo: true },
+    ];
+
+    const expectedPath = 'M100,0V100M200,0V100L0,0V100';
+
+    const path = toPath( points );
+
+    expect( path ).toEqual( expectedPath );
+  });
+
   it( 'should return correct path from polyline points', () => {
     const points = [
       { x: 20, y: 30, moveTo: true },

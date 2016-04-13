@@ -13,7 +13,9 @@ const pointsToD = p => {
     const { curve = false, moveTo, x, y } = point;
 
     if ( moveTo || isFirstPoint ) {
-      d += `M${ x },${ y }`;
+      if ( !isLastPoint ) {
+        d += `M${ x },${ y }`;
+      }
     } else if ( curve ) {
       switch ( curve.type ) {
         case 'arc':

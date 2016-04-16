@@ -189,7 +189,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with unspaced decimal params)', () => {
-    const shape = { shape: 'path', d: 'M5.5.2C-.2.5.7.2.9.2' };
+    const shape = { shape: 'path', d: 'M5.5.2C-.2.5.7.2.9.2C125,123,171,73.8,247,51.6L10.5,10' };
 
     const expectedPoints = [
       { x: 5.5, y: 0.2, moveTo: true },
@@ -200,6 +200,14 @@ describe( 'toPoints', () => {
         x2: 0.7,
         y2: 0.2,
       }},
+      { x: 247, y: 51.6, curve: {
+        type: 'cubic',
+        x1: 125,
+        y1: 123,
+        x2: 171,
+        y2: 73.8,
+      }},
+      { x: 10.5, y: 10 },
     ];
 
     const points = toPoints( shape );

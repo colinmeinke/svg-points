@@ -29,7 +29,7 @@ that can take one of the following strings.
 - [`polygon`](#polygon)
 - [`polyline`](#polyline)
 - [`rect`](#rect)
-- [`g`](#group)
+- [`g`](#g)
 
 It also maps all the other required SVG attributes for that
 particular shape to object properties.

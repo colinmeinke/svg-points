@@ -4,7 +4,7 @@ import toPoints from '../src/toPoints';
 
 describe( 'toPoints', () => {
   it( 'should return correct points of a circle', () => {
-    const shape = { shape: 'circle', cx: 50, cy: 50, r: 20 };
+    const shape = { type: 'circle', cx: 50, cy: 50, r: 20 };
 
     const expectedPoints = [
       { x: 50, y: 30, moveTo: true },
@@ -18,7 +18,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of an ellipse', () => {
-    const shape = { shape: 'ellipse', cx: 100, cy: 300, rx: 65, ry: 120 };
+    const shape = { type: 'ellipse', cx: 100, cy: 300, rx: 65, ry: 120 };
 
     const expectedPoints = [
       { x: 100, y: 180, moveTo: true },
@@ -32,7 +32,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a line', () => {
-    const shape = { shape: 'line', x1: 10, x2: 50, y1: 70, y2: 200 };
+    const shape = { type: 'line', x1: 10, x2: 50, y1: 70, y2: 200 };
 
     const expectedPoints = [
       { x: 10, y: 70, moveTo: true },
@@ -45,7 +45,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20L90,30H50V50l-10-20z' };
+    const shape = { type: 'path', d: 'M20,20h50v20L90,30H50V50l-10-20z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -65,7 +65,7 @@ describe( 'toPoints', () => {
 
 
   it( 'should return correct points of a path (with moveto)', () => {
-    const shape = { shape: 'path', d: 'M20,20v30m30-30v30M80,20V50M110,20v30' };
+    const shape = { type: 'path', d: 'M20,20v30m30-30v30M80,20V50M110,20v30' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -84,7 +84,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with arcs)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z' };
+    const shape = { type: 'path', d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -105,7 +105,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with cubic beziers)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20C70,45,80,40,80,35L90,30H50V50c5-3,0-7-5-10l-5-10Z' };
+    const shape = { type: 'path', d: 'M20,20h50v20C70,45,80,40,80,35L90,30H50V50c5-3,0-7-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -126,7 +126,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with shorthand cubic beziers)', () => {
-    const shape = { shape: 'path', d: 'M100,100S175,50,200,100s100,10,100,0' };
+    const shape = { type: 'path', d: 'M100,100S175,50,200,100s100,10,100,0' };
 
     const expectedPoints = [
       { x: 100, y: 100, moveTo: true },
@@ -140,7 +140,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with quadratic beziers)', () => {
-    const shape = { shape: 'path', d: 'M20,20h50v20Q70,45,80,35L90,30H50V50q5-3-5-10l-5-10Z' };
+    const shape = { type: 'path', d: 'M20,20h50v20Q70,45,80,35L90,30H50V50q5-3-5-10l-5-10Z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },
@@ -161,7 +161,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with shorthand quadratic beziers)', () => {
-    const shape = { shape: 'path', d: 'M300,400Q450,200,600,400T900,500t100,0' };
+    const shape = { type: 'path', d: 'M300,400Q450,200,600,400T900,500t100,0' };
 
     const expectedPoints = [
       { x: 300, y: 400, moveTo: true },
@@ -176,7 +176,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with unspaced negative params)', () => {
-    const shape = { shape: 'path', d: 'M5-2L-1-4' };
+    const shape = { type: 'path', d: 'M5-2L-1-4' };
 
     const expectedPoints = [
       { x: 5, y: -2, moveTo: true },
@@ -189,7 +189,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with unspaced decimal params)', () => {
-    const shape = { shape: 'path', d: 'M5.5.2C-.2.5.7.2.9.2C125,123,171,73.8,247,51.6L10.5,10' };
+    const shape = { type: 'path', d: 'M5.5.2C-.2.5.7.2.9.2C125,123,171,73.8,247,51.6L10.5,10' };
 
     const expectedPoints = [
       { x: 5.5, y: 0.2, moveTo: true },
@@ -216,7 +216,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path (with multiple shorthand commands)', () => {
-    const shape = { shape: 'path', d: 'M0,0L10,10,15,20,20,30' };
+    const shape = { type: 'path', d: 'M0,0L10,10,15,20,20,30' };
 
     const expectedPoints = [
       { x: 0, y: 0, moveTo: true },
@@ -231,7 +231,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a polygon', () => {
-    const shape = { shape: 'polygon', points: '20,30 50,90 20,90 50,30' };
+    const shape = { type: 'polygon', points: '20,30 50,90 20,90 50,30' };
 
     const expectedPoints = [
       { x: 20, y: 30, moveTo: true },
@@ -247,7 +247,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a polyline', () => {
-    const shape = { shape: 'polyline', points: '20,30 50,90 20,90 50,30' };
+    const shape = { type: 'polyline', points: '20,30 50,90 20,90 50,30' };
 
     const expectedPoints = [
       { x: 20, y: 30, moveTo: true },
@@ -262,7 +262,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a rect', () => {
-    const shape = { shape: 'rect', height: 20, width: 50, x: 10, y: 10 };
+    const shape = { type: 'rect', height: 20, width: 50, x: 10, y: 10 };
 
     const expectedPoints = [
       { x: 10, y: 10, moveTo: true },
@@ -278,7 +278,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a rect (with corner radius)', () => {
-    const shape = { shape: 'rect', height: 200, rx: 5, ry: 10, width: 500, x: 50, y: 50 };
+    const shape = { type: 'rect', height: 200, rx: 5, ry: 10, width: 500, x: 50, y: 50 };
 
     const expectedPoints = [
       { x: 55, y: 50, moveTo: true },
@@ -298,9 +298,9 @@ describe( 'toPoints', () => {
   });
 
   it ( 'should return correct points of a g', () => {
-    const shape = { shape: 'g', shapes: [
-      { shape: 'circle', cx: 50, cy: 50, r: 20 },
-      { shape: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
+    const shape = { type: 'g', shapes: [
+      { type: 'circle', cx: 50, cy: 50, r: 20 },
+      { type: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
     ]};
 
     const expectedPoints = [

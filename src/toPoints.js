@@ -1,5 +1,5 @@
-const toPoints = ({ shape, ...attributes }) => {
-  switch ( shape ) {
+const toPoints = ({ type, ...attributes }) => {
+  switch ( type ) {
     case 'circle':
       return getPointsFromCircle( attributes );
     case 'ellipse':

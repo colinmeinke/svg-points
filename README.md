@@ -10,7 +10,7 @@ Includes functions for converting to and from a
 
 ```js
 {
-  shape: 'circle',
+  type: 'circle',
   cx: 50,
   cy: 50,
   r: 20,
@@ -19,7 +19,7 @@ Includes functions for converting to and from a
 
 ## Specification
 
-A SVG shape is an object that includes a `shape` property
+A SVG shape is an object that includes a `type` property
 that can take one of the following strings.
 
 - [`circle`](#circle)
@@ -40,7 +40,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'circle',
+  type: 'circle',
   cx: 50,
   cy: 50,
   r: 20,
@@ -51,7 +51,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'ellipse',
+  type: 'ellipse',
   cx: 100,
   cy: 300,
   rx: 65,
@@ -63,7 +63,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'line',
+  type: 'line',
   x1: 10,
   x2: 50,
   y1: 70,
@@ -75,7 +75,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'path',
+  type: 'path',
   d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z',
 }
 ```
@@ -84,7 +84,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'polygon',
+  type: 'polygon',
   points: '20,30 50,90 20,90 50,30',
 }
 ```
@@ -93,7 +93,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'polyline',
+  type: 'polyline',
   points: '20,30 50,90 20,90 50,30',
 }
 ```
@@ -102,7 +102,7 @@ particular shape to object properties.
 
 ```js
 {
-  shape: 'rect',
+  type: 'rect',
   height: 20,
   width: 50,
   x: 10,
@@ -119,16 +119,16 @@ assumed to be `0`.
 
 ```js
 {
-  shape: 'g',
+  type: 'g',
   shapes: [
     {
-      shape: 'circle',
+      type: 'circle',
       cx: 50,
       cy: 50,
       r: 20,
     },
     {
-      shape: 'line',
+      type: 'line',
       x1: 10,
       x2: 50,
       y1: 70,

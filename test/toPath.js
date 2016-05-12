@@ -260,7 +260,7 @@ describe( 'toPath', () => {
   });
 
   it ( 'should return correct path from circle shape', () => {
-    const shape = { shape: 'circle', cx: 50, cy: 50, r: 20 };
+    const shape = { type: 'circle', cx: 50, cy: 50, r: 20 };
 
     const expectedPath = 'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z';
 
@@ -270,9 +270,9 @@ describe( 'toPath', () => {
   });
 
   it ( 'should return correct paths from g shape', () => {
-    const shape = { shape: 'g', shapes: [
-      { shape: 'circle', cx: 50, cy: 50, r: 20 },
-      { shape: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
+    const shape = { type: 'g', shapes: [
+      { type: 'circle', cx: 50, cy: 50, r: 20 },
+      { type: 'line', x1: 10, y1: 70, x2: 50, y2: 200 },
     ]};
 
     const expectedPaths = [

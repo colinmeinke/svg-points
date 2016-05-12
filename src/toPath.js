@@ -53,7 +53,7 @@ const pointsToD = p => {
 
 const toPath = s => {
   const isPoints = Array.isArray( s );
-  const isGroup = isPoints ? ( Array.isArray( s[ 0 ])) : ( s.shape === 'g' );
+  const isGroup = isPoints ? ( Array.isArray( s[ 0 ])) : ( s.type === 'g' );
   const points = isPoints ? s : ( isGroup ? s.shapes.map( shp => toPoints( shp )) : toPoints( s ));
 
   if ( isGroup ) {

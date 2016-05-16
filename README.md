@@ -192,7 +192,7 @@ const toPath = SVGPoints.toPath;
 And if you just want to smash in a Javascript file you're
 also covered. Drop this in place ...
 
-[https://npmcdn.com/svg-points@1.2.3/dist/svg-points.min.js](https://npmcdn.com/svg-points@1.2.3/dist/svg-points.min.js)
+[https://npmcdn.com/svg-points@2.0.1/dist/svg-points.min.js](https://npmcdn.com/svg-points@2.0.1/dist/svg-points.min.js)
 
 Then access it on the `SVGPoints` global variable.
 

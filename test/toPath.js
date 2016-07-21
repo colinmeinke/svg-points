@@ -6,11 +6,11 @@ describe( 'toPath', () => {
   it( 'should return correct path from circle points', () => {
     const points = [
       { x: 50, y: 30, moveTo: true },
-      { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
-      { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
+      { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
+      { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
     ];
 
-    const expectedPath = 'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z';
+    const expectedPath = 'M50,30A20,20,0,0,1,50,70A20,20,0,0,1,50,30Z';
 
     const path = toPath( points );
 
@@ -20,11 +20,11 @@ describe( 'toPath', () => {
   it( 'should return correct path from ellipse points', () => {
     const points = [
       { x: 100, y: 180, moveTo: true },
-      { x: 100, y: 420, curve: { type: 'arc', rx: 65, ry: 120 }},
-      { x: 100, y: 180, curve: { type: 'arc', rx: 65, ry: 120 }},
+      { x: 100, y: 420, curve: { type: 'arc', rx: 65, ry: 120, sweepFlag: 1 }},
+      { x: 100, y: 180, curve: { type: 'arc', rx: 65, ry: 120, sweepFlag: 1 }},
     ];
 
-    const expectedPath = 'M100,180A65,120,0,0,0,100,420A65,120,0,0,0,100,180Z';
+    const expectedPath = 'M100,180A65,120,0,0,1,100,420A65,120,0,0,1,100,180Z';
 
     const path = toPath( points );
 
@@ -262,7 +262,7 @@ describe( 'toPath', () => {
   it ( 'should return correct path from circle shape', () => {
     const shape = { type: 'circle', cx: 50, cy: 50, r: 20 };
 
-    const expectedPath = 'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z';
+    const expectedPath = 'M50,30A20,20,0,0,1,50,70A20,20,0,0,1,50,30Z';
 
     const path = toPath( shape );
 
@@ -276,7 +276,7 @@ describe( 'toPath', () => {
     ]};
 
     const expectedPaths = [
-      'M50,30A20,20,0,0,0,50,70A20,20,0,0,0,50,30Z',
+      'M50,30A20,20,0,0,1,50,70A20,20,0,0,1,50,30Z',
       'M10,70L50,200',
     ];
 

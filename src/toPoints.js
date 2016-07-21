@@ -24,16 +24,16 @@ const toPoints = ({ type, ...attributes }) => {
 const getPointsFromCircle = ({ cx, cy, r }) => {
   return [
     { x: cx, y: cy - r, moveTo: true },
-    { x: cx, y: cy + r, curve: { type: 'arc', rx: r, ry: r }},
-    { x: cx, y: cy - r, curve: { type: 'arc', rx: r, ry: r }},
+    { x: cx, y: cy + r, curve: { type: 'arc', rx: r, ry: r, sweepFlag: 1 }},
+    { x: cx, y: cy - r, curve: { type: 'arc', rx: r, ry: r, sweepFlag: 1 }},
   ];
 };
 
 const getPointsFromEllipse = ({ cx, cy, rx, ry }) => {
   return [
     { x: cx, y: cy - ry, moveTo: true },
-    { x: cx, y: cy + ry, curve: { type: 'arc', rx, ry }},
-    { x: cx, y: cy - ry, curve: { type: 'arc', rx, ry }},
+    { x: cx, y: cy + ry, curve: { type: 'arc', rx, ry, sweepFlag: 1 }},
+    { x: cx, y: cy - ry, curve: { type: 'arc', rx, ry, sweepFlag: 1 }},
   ];
 };
 

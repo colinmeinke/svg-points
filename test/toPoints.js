@@ -8,8 +8,8 @@ describe( 'toPoints', () => {
 
     const expectedPoints = [
       { x: 50, y: 30, moveTo: true },
-      { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
-      { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
+      { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
+      { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
     ];
 
     const points = toPoints( shape );
@@ -22,8 +22,8 @@ describe( 'toPoints', () => {
 
     const expectedPoints = [
       { x: 100, y: 180, moveTo: true },
-      { x: 100, y: 420, curve: { type: 'arc', rx: 65, ry: 120 }},
-      { x: 100, y: 180, curve: { type: 'arc', rx: 65, ry: 120 }},
+      { x: 100, y: 420, curve: { type: 'arc', rx: 65, ry: 120, sweepFlag: 1 }},
+      { x: 100, y: 180, curve: { type: 'arc', rx: 65, ry: 120, sweepFlag: 1 }},
     ];
 
     const points = toPoints( shape );
@@ -306,8 +306,8 @@ describe( 'toPoints', () => {
     const expectedPoints = [
       [
         { x: 50, y: 30, moveTo: true },
-        { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20 }},
-        { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20 }},
+        { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
+        { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 }},
       ],
       [
         { x: 10, y: 70, moveTo: true },

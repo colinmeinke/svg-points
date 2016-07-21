@@ -22,18 +22,18 @@
   },
   "description": "Get point data from SVG shapes. Convert point data to an SVG path",
   "devDependencies": {
-    "babel-cli": "^6.7.5",
-    "babel-core": "^6.7.6",
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
-    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015-subset-loose": "^1.0.2",
-    "commitizen": "^2.7.6",
-    "cz-conventional-changelog": "^1.1.5",
-    "expect": "^1.14.0",
-    "mocha": "^2.4.5",
-    "rimraf": "^2.5.2",
-    "webpack": "^1.13.0",
-    "semantic-release": "^4.3.5"
+    "commitizen": "^2.8.2",
+    "cz-conventional-changelog": "^1.1.6",
+    "expect": "^1.20.2",
+    "mocha": "^2.5.3",
+    "rimraf": "^2.5.3",
+    "semantic-release": "^4.3.5",
+    "webpack": "^1.13.1"
   },
   "keywords": [
     "convert",

@@ -45,7 +45,7 @@ describe( 'toPoints', () => {
   });
 
   it( 'should return correct points of a path', () => {
-    const shape = { type: 'path', d: 'M20,20h50v20L90,30H50V50l-10-20z' };
+    const shape = { type: 'path', d: 'm20,20h50v20L90,30H50V50l-10-20z' };
 
     const expectedPoints = [
       { x: 20, y: 20, moveTo: true },

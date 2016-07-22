@@ -99,8 +99,8 @@ const getPointsFromPath = ({ d }) => {
             relative = true;
 
           case 'M':
-            const x = ( relative ? prevPoint.x : 0 ) + commandParams.shift();
-            const y = ( relative ? prevPoint.y : 0 ) + commandParams.shift();
+            const x = ( relative && prevPoint ? prevPoint.x : 0 ) + commandParams.shift();
+            const y = ( relative && prevPoint ? prevPoint.y : 0 ) + commandParams.shift();
 
             moveTo = { x, y };
 

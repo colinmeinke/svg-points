@@ -24,7 +24,7 @@ for powerful shape manipulation.
 - [toPoints](#topoints) – converts an SVG shape object to a
   [points array](https://github.com/colinmeinke/points)
 - [toPath](#topath) – converts an SVG shape object or a
-  points array to an SVG path d attribute string.
+  points array to an SVG path `d` attribute string.
 
 ## Specification
 

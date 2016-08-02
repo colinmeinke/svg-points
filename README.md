@@ -1,8 +1,10 @@
 # SVG points
 
 A specification for storing SVG shape data in Javascript.
-Includes functions for converting to and from a
-[point object shape array](https://github.com/colinmeinke/points).
+
+Best paired with the classic
+[points library](https://github.com/colinmeinke/points)
+for powerful shape manipulation.
 
 **2.3kb gzipped. No dependencies.**
 
@@ -16,6 +18,13 @@ Includes functions for converting to and from a
   r: 20,
 }
 ```
+
+## Functions
+
+- [toPoints](#toPoints) – converts an SVG shape object to a
+  [points array](https://github.com/colinmeinke/points)
+- [toPath](#toPath) – converts an SVG shape object or a
+  points array to an SVG path `d` value.
 
 ## Specification
 
@@ -155,10 +164,10 @@ const points = toPoints( shape );
 
 Takes an SVG shape object as the only argument, and
 returns a new
-[point object shape array](https://github.com/colinmeinke/points).
+[points array](https://github.com/colinmeinke/points).
 
 If passing in a group shape object then returns an array of
-point object shape arrays.
+points arrays.
 
 ### toPath
 
@@ -169,12 +178,12 @@ const pathFromPoints = toPath( points );
 ```
 
 Takes either an SVG shape object, or a
-[point object shape array](https://github.com/colinmeinke/points),
+[points array](https://github.com/colinmeinke/points),
 and returns a SVG path `d` attribute string.
 
 If passing in a group shape object, or an array of
-point object shape arrays then returns an array of
-SVG path `d` attribute strings.
+points arrays then returns an array of SVG path `d`
+attribute strings.
 
 ## CommonJS
 

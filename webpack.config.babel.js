@@ -3,7 +3,7 @@ export default {
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel',
-      test: /\.js$/,
-    }],
-  },
-};
+      test: /\.js$/
+    }]
+  }
+}

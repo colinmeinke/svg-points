@@ -1,4 +1,4 @@
-import toPath from './toPath';
-import toPoints from './toPoints';
+import toPath from './toPath'
+import toPoints from './toPoints'
 
-export { toPath, toPoints };
+export { toPath, toPoints }

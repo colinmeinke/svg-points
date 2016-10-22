@@ -15,7 +15,7 @@ for powerful shape manipulation.
   type: 'circle',
   cx: 50,
   cy: 50,
-  r: 20,
+  r: 20
 }
 ```
 
@@ -52,7 +52,7 @@ particular shape to object properties.
   type: 'circle',
   cx: 50,
   cy: 50,
-  r: 20,
+  r: 20
 }
 ```
 
@@ -64,7 +64,7 @@ particular shape to object properties.
   cx: 100,
   cy: 300,
   rx: 65,
-  ry: 120,
+  ry: 120
 }
 ```
 
@@ -76,7 +76,7 @@ particular shape to object properties.
   x1: 10,
   x2: 50,
   y1: 70,
-  y2: 200,
+  y2: 200
 }
 ```
 
@@ -85,7 +85,7 @@ particular shape to object properties.
 ```js
 {
   type: 'path',
-  d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z',
+  d: 'M20,20h50v20A2,2,0,0,1,80,35L90,30H50V50a5,5,45,1,0-5-10l-5-10Z'
 }
 ```
 
@@ -94,7 +94,7 @@ particular shape to object properties.
 ```js
 {
   type: 'polygon',
-  points: '20,30 50,90 20,90 50,30',
+  points: '20,30 50,90 20,90 50,30'
 }
 ```
 
@@ -103,7 +103,7 @@ particular shape to object properties.
 ```js
 {
   type: 'polyline',
-  points: '20,30 50,90 20,90 50,30',
+  points: '20,30 50,90 20,90 50,30'
 }
 ```
 
@@ -117,7 +117,7 @@ particular shape to object properties.
   x: 10,
   y: 10,
   rx: 2,
-  ry: 2,
+  ry: 2
 }
 ```
 
@@ -134,16 +134,16 @@ assumed to be `0`.
       type: 'circle',
       cx: 50,
       cy: 50,
-      r: 20,
+      r: 20
     },
     {
       type: 'line',
       x1: 10,
       x2: 50,
       y1: 70,
-      y2: 200,
-    },
-  ],
+      y2: 200
+    }
+  ]
 }
 ```
 
@@ -158,8 +158,8 @@ npm install svg-points
 ### toPoints
 
 ```js
-import { toPoints } from 'svg-points';
-const points = toPoints( shape );
+import { toPoints } from 'svg-points'
+const points = toPoints(shape)
 ```
 
 Takes an SVG shape object as the only argument, and
@@ -172,9 +172,9 @@ points arrays.
 ### toPath
 
 ```js
-import { toPath } from 'svg-points';
-const pathFromShape = toPath( shape );
-const pathFromPoints = toPath( points );
+import { toPath } from 'svg-points'
+const pathFromShape = toPath(shape)
+const pathFromPoints = toPath(points)
 ```
 
 Takes either an SVG shape object, or a
@@ -191,9 +191,9 @@ This is how you get to the good stuff if you're using
 `require`.
 
 ```js
-const SVGPoints = require( 'svg-points' );
-const toPoints = SVGPoints.toPoints;
-const toPath = SVGPoints.toPath;
+const SVGPoints = require('svg-points')
+const toPoints = SVGPoints.toPoints
+const toPath = SVGPoints.toPath
 ```
 
 ## UMD
@@ -201,13 +201,13 @@ const toPath = SVGPoints.toPath;
 And if you just want to smash in a Javascript file you're
 also covered. Drop this in place ...
 
-[https://unpkg.com/svg-points@2.0.1/dist/svg-points.min.js](https://unpkg.com/svg-points@2.0.1/dist/svg-points.min.js)
+[https://unpkg.com/svg-points/dist/svg-points.min.js](https://unpkg.com/svg-points/dist/svg-points.min.js)
 
 Then access it on the `SVGPoints` global variable.
 
 ```js
-const toPoints = SVGPoints.toPoints;
-const toPath = SVGPoints.toPath;
+const toPoints = SVGPoints.toPoints
+const toPath = SVGPoints.toPath
 ```
 
 ## Help make this better

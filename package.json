@@ -57,13 +57,13 @@
     "build:umd": "npm run build:umd:dev && npm run build:umd:pro",
     "build:umd:dev": "webpack ./src/index.js ./dist/svg-points.js --output-library SVGPoints --output-library-target umd --config ./webpack.config.babel.js",
     "build:umd:pro": "webpack -p ./src/index.js ./dist/svg-points.min.js --output-library SVGPoints --output-library-target umd --config ./webpack.config.babel.js",
-    "clean": "rimraf lib dist",
     "commit": "git-cz",
     "fix": "standard --fix",
     "lint": "standard --verbose | snazzy",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "npm run tidy && npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "mocha --compilers js:babel-core/register test/*.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "tidy": "rimraf lib dist"
   },
   "version": "0.0.0-semantically-released"
 }

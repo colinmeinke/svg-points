@@ -48,6 +48,7 @@
   ],
   "license": "ISC",
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "name": "svg-points",
   "repository": {
     "type": "git",

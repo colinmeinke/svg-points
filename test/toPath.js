@@ -324,3 +324,22 @@ test('does not close path when last point does not match corresponding moveTo po
 
   expect(path).toEqual(expectedPath)
 })
+
+test('closes any line where first and last points match', () => {
+  const points = [
+    { x: 10, y: 10, moveTo: true },
+    { x: 10, y: 100 },
+    { x: 100, y: 10, moveTo: true },
+    { x: 200, y: 100 },
+    { x: 100, y: 100 },
+    { x: 100, y: 10 },
+    { x: 200, y: 10, moveTo: true },
+    { x: 10, y: 10 }
+  ]
+
+  const expectedPath = 'M10,10V100M100,10L200,100H100ZM200,10H10'
+
+  const path = toPath(points)
+
+  expect(path).toEqual(expectedPath)
+})

@@ -123,6 +123,24 @@ test('should return correct points of a path (with cubic beziers)', () => {
   expect(points).toEqual(expectedPoints)
 })
 
+test('should return correct points of a path (with consecutive cubic beziers)', () => {
+  const shape = {
+    type: 'path',
+    d: 'M0,0c100,0 0,100 100,100c100,0 0,-100 100,-100c100,0 0,100 100,100'
+  }
+
+  const expectedPoints = [
+    { x: 0, y: 0, moveTo: true },
+    { x: 100, y: 100, curve: { type: 'cubic', x1: 100, y1: 0, x2: 0, y2: 100 } },
+    { x: 200, y: 0, curve: { type: 'cubic', x1: 200, y1: 100, x2: 100, y2: 0 } },
+    { x: 300, y: 100, curve: { type: 'cubic', x1: 300, y1: 0, x2: 200, y2: 100 } }
+  ]
+
+  const points = toPoints(shape)
+
+  expect(points).toEqual(expectedPoints)
+})
+
 test('should return correct points of a path (with shorthand cubic beziers)', () => {
   const shape = { type: 'path', d: 'M100,100S175,50,200,100s100,10,100,0' }
 

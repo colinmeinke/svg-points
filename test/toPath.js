@@ -309,3 +309,18 @@ test('should return correct paths from a group of points', () => {
 
   expect(paths).toEqual(expectedPaths)
 })
+
+test('does not close path when last point does not match corresponding moveTo point', () => {
+  const points = [
+    { x: 40, y: 80, moveTo: true },
+    { x: 50, y: 60 },
+    { x: 30, y: 40, moveTo: true },
+    { x: 40, y: 80 }
+  ]
+
+  const expectedPath = 'M40,80L50,60M30,40L40,80'
+
+  const path = toPath(points)
+
+  expect(path).toEqual(expectedPath)
+})

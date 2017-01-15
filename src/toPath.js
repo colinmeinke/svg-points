@@ -3,8 +3,7 @@ import toPoints from './toPoints'
 const pointsToD = p => {
   let d = ''
   let i = 0
-
-  const firstPoint = p[ i ]
+  let firstPointInCurrentLine
 
   for (let point of p) {
     const isFirstPoint = i === 0
@@ -14,6 +13,7 @@ const pointsToD = p => {
 
     if (moveTo || isFirstPoint) {
       if (!isLastPoint) {
+        firstPointInCurrentLine = point
         d += `M${x},${y}`
       }
     } else if (curve) {
@@ -32,10 +32,10 @@ const pointsToD = p => {
           break
       }
 
-      if (isLastPoint && x === firstPoint.x && y === firstPoint.y) {
+      if (isLastPoint && x === firstPointInCurrentLine.x && y === firstPointInCurrentLine.y) {
         d += 'Z'
       }
-    } else if (isLastPoint && x === firstPoint.x && y === firstPoint.y) {
+    } else if (isLastPoint && x === firstPointInCurrentLine.x && y === firstPointInCurrentLine.y) {
       d += 'Z'
     } else if (x !== prevPoint.x && y !== prevPoint.y) {
       d += `L${x},${y}`

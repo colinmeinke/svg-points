@@ -199,8 +199,8 @@ const getPointsFromPath = ({ d }) => {
             } else {
               diff.x = Math.abs(sx - sx2)
               diff.y = Math.abs(sy - sy2)
-              sx1 = sx < sx2 ? prevPoint.x - diff.x : prevPoint.x + diff.x
-              sy1 = sy < sy2 ? prevPoint.y + diff.y : prevPoint.y - diff.y
+              sx1 = prevPoint.x
+              sy1 = prevPoint.y
             }
 
             points.push({ curve: { type: 'cubic', x1: sx1, y1: sy1, x2: sx2, y2: sy2 }, x: sx, y: sy })

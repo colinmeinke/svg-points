@@ -146,7 +146,7 @@ test('should return correct points of a path (with shorthand cubic beziers)', ()
 
   const expectedPoints = [
     { x: 100, y: 100, moveTo: true },
-    { x: 200, y: 100, curve: { type: 'cubic', x1: 125, y1: 50, x2: 175, y2: 50 } },
+    { x: 200, y: 100, curve: { type: 'cubic', x1: 100, y1: 100, x2: 175, y2: 50 } },
     { x: 300, y: 100, curve: { type: 'cubic', x1: 225, y1: 150, x2: 300, y2: 110 } }
   ]
 

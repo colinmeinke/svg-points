@@ -104,8 +104,8 @@ test('should return correct points of a path (with arcs)', () => {
 
 test('should return correct points of a path (with consecutive arcs)', () => {
   const shape = {
-    d:"m-40,20A100,100,0,0,0,-10,-10,60,60,0,0,0,-10,0M200,100A40,40,0,0,0,-20,0,10,10,0,0,0,0,0",
-    type: "path"
+    d: 'm-40,20A100,100,0,0,0,-10,-10,60,60,0,0,0,-10,0M200,100A40,40,0,0,0,-20,0,10,10,0,0,0,0,0',
+    type: 'path'
   }
 
   const expectedPoints = [
@@ -114,7 +114,7 @@ test('should return correct points of a path (with consecutive arcs)', () => {
     { x: -10, y: 0, curve: { type: 'arc', rx: 60, ry: 60 } },
     { x: 200, y: 100, moveTo: true },
     { x: -20, y: 0, curve: { type: 'arc', rx: 40, ry: 40 } },
-    { x: 0, y: 0, curve: { type: 'arc', rx: 10, ry: 10 } },
+    { x: 0, y: 0, curve: { type: 'arc', rx: 10, ry: 10 } }
   ]
 
   const points = toPoints(shape)

@@ -102,6 +102,26 @@ test('should return correct points of a path (with arcs)', () => {
   expect(points).toEqual(expectedPoints)
 })
 
+test('should return correct points of a path (with consecutive arcs)', () => {
+  const shape = {
+    d:"m-40,20A100,100,0,0,0,-10,-10,60,60,0,0,0,-10,0M200,100A40,40,0,0,0,-20,0,10,10,0,0,0,0,0",
+    type: "path"
+  }
+
+  const expectedPoints = [
+    { x: -40, y: 20, moveTo: true },
+    { x: -10, y: -10, curve: { type: 'arc', rx: 100, ry: 100 } },
+    { x: -10, y: 0, curve: { type: 'arc', rx: 60, ry: 60 } },
+    { x: 200, y: 100, moveTo: true },
+    { x: -20, y: 0, curve: { type: 'arc', rx: 40, ry: 40 } },
+    { x: 0, y: 0, curve: { type: 'arc', rx: 10, ry: 10 } },
+  ]
+
+  const points = toPoints(shape)
+
+  expect(points).toEqual(expectedPoints)
+})
+
 test('should return correct points of a path (with cubic beziers)', () => {
   const shape = { type: 'path', d: 'M20,20h50v20C70,45,80,40,80,35L90,30H50V50c5-3,0-7-5-10l-5-10Z' }
 

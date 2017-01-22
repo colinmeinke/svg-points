@@ -158,8 +158,8 @@ const getPointsFromPath = ({ d }) => {
             })
 
             for (let k of optionalArcKeys) {
-              if (points[ i ][ 'curve' ][ k ] === 0) {
-                delete points[ i ][ 'curve' ][ k ]
+              if (points[ points.length - 1 ][ 'curve' ][ k ] === 0) {
+                delete points[ points.length - 1 ][ 'curve' ][ k ]
               }
             }
 

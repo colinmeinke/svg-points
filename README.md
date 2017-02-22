@@ -159,7 +159,23 @@ npm install svg-points
 
 ```js
 import { toPoints } from 'svg-points'
-const points = toPoints(shape)
+
+const circle = {
+  type: 'circle',
+  cx: 50,
+  cy: 50,
+  r: 20
+}
+
+const points = toPoints(circle)
+
+console.log(points)
+
+// [
+//   { x: 50, y: 30, moveTo: true },
+//   { x: 50, y: 70, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 } },
+//   { x: 50, y: 30, curve: { type: 'arc', rx: 20, ry: 20, sweepFlag: 1 } }
+// ]
 ```
 
 Takes an SVG shape object as the only argument, and
@@ -173,8 +189,19 @@ points arrays.
 
 ```js
 import { toPath } from 'svg-points'
-const pathFromShape = toPath(shape)
-const pathFromPoints = toPath(points)
+
+const circle = {
+  type: 'circle',
+  cx: 50,
+  cy: 50,
+  r: 20
+}
+
+const d = toPath(circle)
+
+console.log(d)
+
+// 'M50,30A20,20,0,0,1,50,70A20,20,0,0,1,50,30Z'
 ```
 
 Takes either an SVG shape object, or a

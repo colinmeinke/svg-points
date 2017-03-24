@@ -25,6 +25,8 @@ for powerful shape manipulation.
   [points array](https://github.com/colinmeinke/points)
 - [toPath](#topath) – converts an SVG shape object or a
   points array to an SVG path `d` attribute string.
+- [valid](#valid) – checks an SVG shape object is
+  valid
 
 ## Specification
 
@@ -211,6 +213,25 @@ and returns a SVG path `d` attribute string.
 If passing in a group shape object, or an array of
 points arrays then returns an array of SVG path `d`
 attribute strings.
+
+### valid
+
+```js
+import { valid } from 'svg-points'
+
+const ellipse = {
+  type: 'ellipse',
+  cy: 50,
+  rx: 5,
+  ry: 10
+}
+
+const { errors } = valid(ellipse)
+
+console.log(errors)
+
+// [ 'cx prop is required on a ellipse' ]
+```
 
 ## CommonJS
 

@@ -1,21 +1,21 @@
-const toPoints = ({ type, ...attributes }) => {
+const toPoints = ({ type, ...props }) => {
   switch (type) {
     case 'circle':
-      return getPointsFromCircle(attributes)
+      return getPointsFromCircle(props)
     case 'ellipse':
-      return getPointsFromEllipse(attributes)
+      return getPointsFromEllipse(props)
     case 'line':
-      return getPointsFromLine(attributes)
+      return getPointsFromLine(props)
     case 'path':
-      return getPointsFromPath(attributes)
+      return getPointsFromPath(props)
     case 'polygon':
-      return getPointsFromPolygon(attributes)
+      return getPointsFromPolygon(props)
     case 'polyline':
-      return getPointsFromPolyline(attributes)
+      return getPointsFromPolyline(props)
     case 'rect':
-      return getPointsFromRect(attributes)
+      return getPointsFromRect(props)
     case 'g':
-      return getPointsFromG(attributes)
+      return getPointsFromG(props)
     default:
       throw new Error('Not a valid shape type')
   }

@@ -6,7 +6,7 @@ Best paired with the classic
 [points library](https://github.com/colinmeinke/points)
 for powerful shape manipulation.
 
-**2.3kb gzipped. No dependencies.**
+**2.7kb gzipped. No dependencies.**
 
 ## Example shape
 

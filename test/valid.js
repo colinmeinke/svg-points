@@ -49,7 +49,6 @@ test('should be valid when circle passed correct props', () => {
   expect(result.errors).toHaveLength(0)
 })
 
-
 test('should be valid when complex shape passed correct props', () => {
   const shape = {
     type: 'g',

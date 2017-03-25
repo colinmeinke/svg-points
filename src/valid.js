@@ -30,7 +30,7 @@ const getErrors = shape => {
 
   if (shape.type === 'g' && Array.isArray(shape.shapes)) {
     const childErrors = shape.shapes.map(s => getErrors(s))
-    return [].concat.apply([], [ errors, ...childErrors ])
+    return [].concat.apply(errors, childErrors)
   }
 
   return errors

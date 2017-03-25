@@ -3,28 +3,35 @@ const getErrors = shape => {
   const errors = []
 
   rules.map(({ match, prop, required, type }) => {
-    if (required && typeof shape[ prop ] === 'undefined') {
-      errors.push(
-        `${prop} prop is required${prop === 'type' ? '' : ` on a ${shape.type}`}`
-      )
-    }
-
-    if (typeof type !== 'undefined') {
-      if (type === 'array') {
-        if (!Array.isArray(shape[ prop ])) {
-          errors.push(`${prop} prop must be of type array`)
-        }
-      } else if (typeof shape[ prop ] !== type) {
-        errors.push(`${prop} prop must be of type ${type}`)
+    if (typeof shape[ prop ] === 'undefined') {
+      if (required) {
+        errors.push(
+          `${prop} prop is required${prop === 'type' ? '' : ` on a ${shape.type}`}`
+        )
       }
-    }
+    } else {
+      if (typeof type !== 'undefined') {
+        if (type === 'array') {
+          if (!Array.isArray(shape[ prop ])) {
+            errors.push(`${prop} prop must be of type array`)
+          }
+        } else if (typeof shape[ prop ] !== type) {
+          errors.push(`${prop} prop must be of type ${type}`)
+        }
+      }
 
-    if (Array.isArray(match)) {
-      if (match.indexOf(shape[ prop ]) === -1) {
-        errors.push(`${prop} prop must be one of ${match.join(', ')}`)
+      if (Array.isArray(match)) {
+        if (match.indexOf(shape[ prop ]) === -1) {
+          errors.push(`${prop} prop must be one of ${match.join(', ')}`)
+        }
       }
     }
   })
+
+  if (shape.type === 'g' && Array.isArray(shape.shapes)) {
+    const childErrors = shape.shapes.map(s => getErrors(s))
+    return [].concat.apply([], [ errors, ...childErrors ])
+  }
 
   return errors
 }

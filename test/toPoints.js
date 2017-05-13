@@ -366,3 +366,20 @@ test('should return correct points of a g', () => {
 
   expect(points).toEqual(expectedPoints)
 })
+
+test('should not add an additional point for z if last point equals first', () => {
+  const shape = {
+    type: 'path',
+    d: 'M30,45A5,5,0,0,1,30,55A5,5,0,0,1,30,45Z'
+  }
+
+  const expectedPoints = [
+    { x: 30, y: 45, moveTo: true },
+    { x: 30, y: 55, curve: { type: 'arc', rx: 5, ry: 5, sweepFlag: 1 } },
+    { x: 30, y: 45, curve: { type: 'arc', rx: 5, ry: 5, sweepFlag: 1 } }
+  ]
+
+  const points = toPoints(shape)
+
+  expect(points).toEqual(expectedPoints)
+})

@@ -15,7 +15,7 @@ const getErrors = shape => {
           if (!Array.isArray(shape[ prop ])) {
             errors.push(`${prop} prop must be of type array`)
           }
-        } else if (typeof shape[ prop ] !== type) {
+        } else if (typeof shape[ prop ] !== type) { // eslint-disable-line valid-typeof
           errors.push(`${prop} prop must be of type ${type}`)
         }
       }

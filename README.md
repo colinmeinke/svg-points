@@ -6,7 +6,11 @@ Best paired with the classic
 [points library](https://github.com/colinmeinke/points)
 for powerful shape manipulation.
 
-**2.6kb gzipped. No dependencies.**
+If you are looking to convert a SVG DOM node directly to SVG points,
+then check out the `plainShapeObject` function of
+[Wilderness DOM node](https://github.com/colinmeinke/wilderness-dom-node#readme).
+
+**2.6kb gzipped.**
 
 ## Example shape
 

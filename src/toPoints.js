@@ -100,21 +100,25 @@ const getPointsFromPath = ({ d }) => {
     const upperCaseCommand = command.toUpperCase()
     const commandLength = commandLengths[ upperCaseCommand ]
     const relative = isRelative(command)
-    const prevPoint = i === 0 ? null : points[ points.length - 1 ]
 
     if (commandLength > 0) {
       const commandParams = params.shift()
       const iterations = commandParams.length / commandLength
 
       for (let j = 0; j < iterations; j++) {
+        const prevPoint = points[ points.length - 1 ] || { x: 0, y: 0 }
+
         switch (upperCaseCommand) {
           case 'M':
-            const x = (relative && prevPoint ? prevPoint.x : 0) + commandParams.shift()
-            const y = (relative && prevPoint ? prevPoint.y : 0) + commandParams.shift()
+            const x = (relative ? prevPoint.x : 0) + commandParams.shift()
+            const y = (relative ? prevPoint.y : 0) + commandParams.shift()
 
-            moveTo = { x, y }
-
-            points.push({ x, y, moveTo: true })
+            if (j === 0) {
+              moveTo = { x, y }
+              points.push({ x, y, moveTo: true })
+            } else {
+              points.push({ x, y })
+            }
 
             break
 
@@ -245,6 +249,8 @@ const getPointsFromPath = ({ d }) => {
         }
       }
     } else {
+      const prevPoint = points[ points.length - 1 ] || { x: 0, y: 0 }
+
       if (prevPoint.x !== moveTo.x || prevPoint.y !== moveTo.y) {
         points.push({ x: moveTo.x, y: moveTo.y })
       }

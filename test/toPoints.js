@@ -102,6 +102,40 @@ test('should return correct points of a path (with arcs)', () => {
   expect(points).toEqual(expectedPoints)
 })
 
+test('should return correct points of a path (with consecutive absolute moveTos)', () => {
+  const shape = {
+    d: 'M10 10 30 10 L40 10',
+    type: 'path'
+  }
+
+  const expectedPoints = [
+    { x: 10, y: 10, moveTo: true },
+    { x: 30, y: 10 },
+    { x: 40, y: 10 }
+  ]
+
+  const points = toPoints(shape)
+
+  expect(points).toEqual(expectedPoints)
+})
+
+test('should return correct points of a path (with consecutive relative moveTos)', () => {
+  const shape = {
+    d: 'm10 10 30 10 L40 10',
+    type: 'path'
+  }
+
+  const expectedPoints = [
+    { x: 10, y: 10, moveTo: true },
+    { x: 40, y: 20 },
+    { x: 40, y: 10 }
+  ]
+
+  const points = toPoints(shape)
+
+  expect(points).toEqual(expectedPoints)
+})
+
 test('should return correct points of a path (with consecutive arcs)', () => {
   const shape = {
     d: 'm-40,20A100,100,0,0,0,-10,-10,60,60,0,0,0,-10,0M200,100A40,40,0,0,0,-20,0,10,10,0,0,0,0,0',

@@ -72,7 +72,7 @@ declare module "svg-points" {
   }
 
   interface WithPoints {
-    points: string[];
+    points: string;
   }
 
   interface Polygon extends WithPoints {

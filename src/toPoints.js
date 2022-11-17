@@ -79,7 +79,7 @@ const getCommands = d => d.match(validCommands)
 
 const getParams = d => d.split(validCommands)
   .map(v => v.replace(/[0-9]+-/g, m => `${m.slice(0, -1)} -`))
-  .map(v => v.replace(/\.[0-9]+/g, m => `${m} `))
+  .map(v => v.replace(/\.([0-9]e)+/g, m => `${m} `))
   .map(v => v.trim())
   .filter(v => v.length > 0)
   .map(v => v.split(/[ ,]+/)
